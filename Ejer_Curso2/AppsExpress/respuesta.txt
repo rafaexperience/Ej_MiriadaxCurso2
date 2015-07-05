@@ -1,0 +1,25 @@
+Respuesta deEduard Eliecer Castro Guardo
+
+Buenas.
+Ante todo, siento haber tardado en corregir.
+Lo básico está ahí, pero no acaba de encajar. Me explico por partes:
+- Tenias que enviar un solo archivo js, que se encargara de gestionar todo.
+    Sin página html. Habria que pasarla como txt
+- Además, si pones solo la dirección del servidor:  http://localhost:8888,
+   no te envía a static/index.html, que supongo que era lo que querias,
+   si no que lo recoge -linea 33(app.get('*',func..)y te devuelve "URL INCORRECTA".
+   Tendrias que modificar la linea 5 (app.get('/preguntas'func..) por
+   (app.get('/index'fuc..) o (app.get('/'fuc..) también valdría.
+   Ademas no se puede acceder como cliente a /static/index.html, porque
+   tendrias que añadir la linea
+     app.use( express.static( path.join( __dirname, "static" ) ) );
+     Si añades esta linea, que crea la página estática (en el directorio)
+      y cambias el segundo parametro y la carpeta"static" por public,
+      tambien iria ok por http://localhost:8888, porque por defecto busca
+      [servidor]/public/index.html
+   Desde http://localhost:8888/preguntas, va ok.
+- La respuesta acepta demasiadas opciones. se supone que la única válida
+   sería Cristóbal Colón, que la aceptes sin mayúscula y sin tildeen su
+   sitio, puede estar bien ,si es lo que quieres, pero tambien acepta
+   crístóbál cólón.
+Siento la párrafada y espero haber ayudado.
